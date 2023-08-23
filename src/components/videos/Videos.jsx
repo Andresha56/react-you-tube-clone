@@ -1,22 +1,21 @@
-
-
-import React, { useEffect } from 'react'
-import { fetchAPI } from '../api/Api';
-import { UseVideo } from '../../context/videoRenderByGuide/RenderVideo';
-
+import React, { useEffect, useState } from "react";
+import { fetchAPI } from "../api/Api";
+import { UseVideo } from "../../context/videoRenderByGuide/RenderVideo";
 
 function Videos() {
-  const {renderVideo}=UseVideo()
-  console.log(renderVideo)
-    useEffect(()=>{
+  const { setRentderVideo, renderVideo } = UseVideo();
+  const [videos, setVideos] = useState(null);
 
-        fetchAPI(`search?part=snippet&q=Music`)
-    },[])
-  return (
-    <div>
-      
-    </div>
-  )
+  useEffect(() => {
+    if (renderVideo === "Home") {
+      setRentderVideo("New");
+    }
+    fetchAPI(`search?part=snippet&q=${renderVideo}`)
+    .then(response => setVideos(response.items)
+    );
+  }, [renderVideo, setRentderVideo]);
+
+  return <div></div>;
 }
 
-export default Videos
+export default Videos;
