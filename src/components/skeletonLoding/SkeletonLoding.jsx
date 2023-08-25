@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 
 export default function SkeletonLoding() {
   return (
-    <Grid item xs={6} md={3}  spacing={1}>
+    <Grid item xs={3} md={3}  >
 
       <Skeleton variant="rounded" width={210} height={60} />
       <Skeleton variant="circular" width={40} height={40} />

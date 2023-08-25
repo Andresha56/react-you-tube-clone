@@ -45,8 +45,8 @@ function NavSearch() {
         </Box>
       </Paper>
       {/* ------mic---- */}
-      <Avatar sx={{ width:"2rem", height:"2rem",marginLeft:2, backgroundColor:"#383535"}}>
-        <MicNoneOutlinedIcon />
+     <Avatar sx={{ width:"2rem", height:"2rem",marginLeft:2, backgroundColor:"#383535"}}> {/*  //greyCol*/}
+        <MicNoneOutlinedIcon /> 
       </Avatar>
     </Box>
   );
