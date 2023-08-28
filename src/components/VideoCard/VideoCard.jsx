@@ -1,19 +1,26 @@
 import Grid from "@mui/material/Grid";
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
+import {Link} from "react-router-dom";
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Avatar,
+  Typography,
+  Box,
+  Stack,
+} from "@mui/material";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import VideoLength from "../videoLength/VideoLength";
+import Views from "../views/Views";
 
-function VideoCard({video}) 
-{
-  // console.log(video.video);
-  console.log(video);
-  console.log("-------------clear------------");
+
+function VideoCard({ video }) {
+  console.log(video?.video?.videoId)
   return (
     <Grid item xs={6} md={4}>
-      <Card
+     <Link to={`/video-id-page/${video?.video?.videoId}`}>
+     <Card
         sx={{
           maxWidth: 345,
           border: 0,
@@ -21,31 +28,60 @@ function VideoCard({video})
           backgroundColor: "#181717",
         }}
       >
-        <CardMedia component="img" height="175" image={""} alt="Paella dish" />
-
+        <Box sx={{ position: "relative" }}>
+          <CardMedia
+            component="img"
+            height="175"
+            image={video?.video?.thumbnails[0].url}
+            alt="Video Thumbnail"
+          />
+          {video?.video?.lengthSeconds && (
+            <VideoLength videoLen={video?.video?.lengthSeconds} />
+          )}
+        </Box>
         <CardContent
-          sx={{ display: "flex", p: 0.3, backgroundColor: "#181717" }}
+          sx={{ display: "flex", p: 0.3, backgroundColor: "#181717", gap: 2 }}
         >
-          <Avatar alt="Remy Sharp" />
+          {/* ---------------avatar------------- */}
+          <Avatar alt="Remy Sharp" src={video?.video?.author?.avatar[0]?.url} />
 
           <div>
+            {/* -----------video-deatil---------- */}
             <Typography
+              color="white"
+              sx={{ fontSize: "12px", color: "#f1f1f1", objectFit: "contain" }}
+            >
+              {video?.video?.title.slice(0, 50) + "..."}
+            </Typography>
+            {/* --------------author----detail------------ */}
+            <Stack
               variant="subtitle1"
-              color="white"
-              sx={{ fontSize: "14px" }}
+              color="#aaa"
+              sx={{
+                fontSize: "14px",
+                flexDirection: "row",
+                gap: "5px",
+                alignItems: "center",
+              }}
             >
-              {""}
-            </Typography>
+              {video?.video?.author?.title}
+              <span>
+                {video?.video?.author?.badges[0]?.type ===
+                  "VERIFIED_CHANNEL" && <CheckCircleIcon fontSize="20px" />}
+              </span>
+            </Stack>
 
-            <Typography
-              color="white"
-              sx={{ fontSize: "12px", color: "#383535" }}
-            >
-              {""}
-            </Typography>
+            {/* ------------views----upload--date----- */}
+            <Stack sx={{ flexDirection: "row",alignItems:"center", color:"#aaa"}}>
+              {video?.video?.stats?.views && (
+                <Views videoView={video?.video?.stats?.views} />
+              )}
+              {video?.video?.publishedTimeText}
+            </Stack>
           </div>
         </CardContent>
       </Card>
+     </Link>
     </Grid>
   );
 }

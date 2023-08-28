@@ -1,20 +1,23 @@
 
 import './App.css';
-import {BrowserRouter} from "react-router-dom"
 import Nav from './components/nav/Nav';
 import Feed from './components/feed/Feed';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import VideoID from './components/videoIdPage/VideoID';
 
 
 function App() {
   return (
-   <>
-   <BrowserRouter>
-    <Nav/>
-    <Feed/>
-   </BrowserRouter>
-   
-   </>
+    <>
+      <BrowserRouter>
+        <Nav />
+       <Routes>
+        <Route path='/' element={<Feed/>}/>
+        <Route path = "/video-id-page/:id" element={<VideoID/>}/>
+       </Routes>
+      </BrowserRouter>
+
+    </>
   );
 }
 

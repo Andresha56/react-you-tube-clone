@@ -20,11 +20,10 @@ function Videos() {
     if (renderVideo === "Home") {
       setRentderVideo("New");
     }
-    fetchAPI(`search?part=snippet&q=${renderVideo}`).then((response) => {
-      setVideos(response.items);
+    fetchAPI(`search/?q=${renderVideo}`).then((response) => {
+      setVideos(response?.contents);
     });
   }, [renderVideo, setRentderVideo]);
-  console.log(videos.items);
   return (
     <Grid container spacing={2} sx={{ width: "100%", padding: "0 30px" }}>
       {videos.length !== 0
@@ -35,8 +34,9 @@ function Videos() {
               <VideoCard key={index} video={video} />
             );
           })
-        : ""}
+        :""}
     </Grid>
+    
   );
 }
 
