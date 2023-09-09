@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import VideoLength from "../videoLength/VideoLength";
-import Views from "../views/Views";
+import FormatNumber from "../formatNumber/FormatNumber";
 
 
 function VideoCard({ video }) {
@@ -34,6 +34,7 @@ function VideoCard({ video }) {
             height="175"
             image={video?.video?.thumbnails[0].url}
             alt="Video Thumbnail"
+            sx={{objectFit:"contain"}}
           />
           {video?.video?.lengthSeconds && (
             <VideoLength videoLen={video?.video?.lengthSeconds} />
@@ -74,7 +75,7 @@ function VideoCard({ video }) {
             {/* ------------views----upload--date----- */}
             <Stack sx={{ flexDirection: "row",alignItems:"center", color:"#aaa"}}>
               {video?.video?.stats?.views && (
-                <Views videoView={video?.video?.stats?.views} />
+                <FormatNumber numbers={video?.video?.stats?.views} />
               )}
               {video?.video?.publishedTimeText}
             </Stack>
