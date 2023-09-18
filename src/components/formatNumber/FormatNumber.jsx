@@ -12,6 +12,7 @@ function formatNumber(number) {
   }
 
 function Formatnumber({numbers}) {
+  
     const number=formatNumber(numbers)
   return (
    <span style={{fontSize:"15px"}}>

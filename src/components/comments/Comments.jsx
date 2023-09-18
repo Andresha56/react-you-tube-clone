@@ -19,7 +19,7 @@ function Comments({ comments }) {
   const { id } = useParams();
   useEffect(() => {
     fetchAPI(`video/comments/?id=${id}`).then((response) => {
-      console.log(response.comments);
+      // console.log(response.comments,"comments");
       setCommentSortBy(response.filters);
       setComment(response.comments);
     });
@@ -48,7 +48,7 @@ function Comments({ comments }) {
       {comment &&
         comment.map((value) => {
           return (
-            <Stack sx={{ flexDirection: "row", gap:2,marginBottom:"20px",}}>
+            <Stack  key={value.commentId} sx={{ flexDirection: "row", gap:2,marginBottom:"20px",width:"80%"}}>
               <Avatar
                 alt="Cindy Baker"
                 src={comment ? value?.author?.avatar[0]?.url : ""}
@@ -60,7 +60,7 @@ function Comments({ comments }) {
                     {comment ? value.publishedTimeText : ""}
                   </Link>
                 </div>
-                <Box sx={{color:"white"}}>{comment? value.content.slice(0,100)+ "..." : ""}</Box>
+                <Box sx={{color:"white"}}>{comment? value.content: ""}</Box>
 
                 <Stack sx={{ flexDirection: "row" }}>
                   <Box sx={{ flexDirection: "row" }}>

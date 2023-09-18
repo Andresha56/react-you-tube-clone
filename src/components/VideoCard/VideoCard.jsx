@@ -31,10 +31,10 @@ function VideoCard({ video }) {
         <Box sx={{ position: "relative" }}>
           <CardMedia
             component="img"
-            height="175"
+            height="170"
             image={video?.video?.thumbnails[0].url}
             alt="Video Thumbnail"
-            sx={{objectFit:"contain"}}
+            sx={{objectFit:"contain",marginBottom:"10px"}}
           />
           {video?.video?.lengthSeconds && (
             <VideoLength videoLen={video?.video?.lengthSeconds} />

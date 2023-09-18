@@ -12,6 +12,8 @@ import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import Formatnumber from "../formatNumber/FormatNumber";
 import { PiShareFatLight } from "react-icons/pi";
 import Comments from "../comments/Comments";
+// ------recomented---videos----
+import RecomendedVideos from "../recomendedVideos/RecomendedVideos";
 
 function VideoID() {
   const [video, setVideo] = useState([]);
@@ -46,17 +48,20 @@ function VideoID() {
             alignItems: "center",
           }}
         >
+          {/* ----------vedio------------- */}
           <ReactPlayer
             url={`https://www.youtube.com/watch?v=${id}`}
             controls
             height="100%"
-            weight="60%"
+            weight="100%"
           />
         </Stack>
       </Box>
       <Container maxWidth="1200px">
-        <Stack sx={{ flexDirection: "column" }}>
-          <Stack sx={{ marginTop: 2 }}>
+        <Stack sx={{flexDirection:"row",gap:5}}>
+          {/* -------video--right---section------- */}
+
+          <Stack sx={{ marginTop: 2 ,width:"60%"}}>
             <h1 style={{ color: "#f1f1f1", fontSize: "18px" }}>
               {video?.title}
             </h1>
@@ -92,6 +97,7 @@ function VideoID() {
                     </Stack>
                     <span>{video?.author?.stats?.subscribersText}</span>
                   </Stack>
+
                   <Box sx={{ marginLeft: "20px" }}>
                     <button
                       style={{
@@ -106,6 +112,8 @@ function VideoID() {
                     </button>
                   </Box>
                 </Stack>
+
+                {/* --------video---right---buttons------- */}
                 <Stack>
                   <Stack
                     sx={{
@@ -141,8 +149,10 @@ function VideoID() {
                           likes ? <ThumbUpIcon /> : <ThumbUpOutlinedIcon />
                         }
                       >
+                        {/* ------------format---number--------------- */}
                         <Formatnumber numbers={video?.stats?.likes} />
                       </Button>
+
                       <span style={{ color: "#aaa" }}>|</span>
                       <Button
                         sx={{
@@ -167,6 +177,7 @@ function VideoID() {
                         }
                       ></Button>
                     </Stack>
+                    {/* ------shareBtn---------- */}
                     <Button
                       sx={{
                         color: "#fff",
@@ -184,13 +195,24 @@ function VideoID() {
                     </Button>
                   </Stack>
                 </Stack>
+
+                {/* ----btn--end--- */}
               </Stack>
             </Stack>
-          </Stack>
+            {/* ---------------video----comments------------------ */}
+            <Comments
+              comments={video?.stats?.comments ? video?.stats?.comments : ""}
+            />
 
-          <Stack></Stack>
+          </Stack>
+          <Stack>
+            <RecomendedVideos id={id} />
+          </Stack>
         </Stack>
-        <Comments comments={video?.stats?.comments ? video?.stats?.comments  :""}/>
+
+        <Stack>
+        
+        </Stack>
       </Container>
     </Box>
   ) : (
