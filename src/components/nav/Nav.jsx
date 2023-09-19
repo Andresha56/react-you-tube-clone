@@ -6,7 +6,7 @@ import Avatar from '@mui/material/Avatar';
 import {Link} from 'react-router-dom';
 import ytLogo from "../../assets/yt-logo.png";
 import { deepPurple } from '@mui/material/colors';
-import NavSearch from "../NavSearch";
+import NavSearch from "./NavSearch";
 import { BiVideoPlus } from 'react-icons/bi';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 

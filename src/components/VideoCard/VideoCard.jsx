@@ -16,7 +16,7 @@ import FormatNumber from "../formatNumber/FormatNumber";
 
 
 function VideoCard({ video }) {
-  console.log(video?.video?.videoId)
+
   return (
     <Grid item xs={6} md={4}>
      <Link to={`/video-id-page/${video?.video?.videoId}`}>

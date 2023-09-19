@@ -28,12 +28,12 @@ function VideoID() {
   // -----------handelLikes---------
   const [likes, setLikes] = useState(false);
   const handelLikes = () => {
-    setLikes(true);
+    setLikes(!likes);
   };
   // -----handelDisLikes-----
   const [dislikes, setDisLikes] = useState(false);
   const handelDisLikes = () => {
-    setDisLikes(true);
+    setDisLikes(!dislikes);
   };
 
   return video.length !== 0 ? (
