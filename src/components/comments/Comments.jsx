@@ -19,10 +19,10 @@ function Comments({ comments }) {
   const { id } = useParams();
   useEffect(() => {
     fetchAPI(`video/comments/?id=${id}`).then((response) => {
-      // console.log(response.comments,"comments");
+      console.log(response);
       setCommentSortBy(response.filters);
       setComment(response.comments);
-    });
+    }).catch((e)=>{console.log(e)});
   }, [id]);
 
   //   -------------likes-------
@@ -36,11 +36,11 @@ function Comments({ comments }) {
 
   return (
     <Stack>
-      <Stack sx={{ flexDirection: "row", marginBottom: "10px" }}>
-        <h2>
+      <Stack sx={{ flexDirection: "row", marginBottom: "10px" ,marginTop:"20px"}}>
+        <h3>
           {comments}
           Comments
-        </h2>
+        </h3>
         <SortIcon />
         <SortBy sortBy={commentSortBy ? commentSortBy : ""} />
       </Stack>

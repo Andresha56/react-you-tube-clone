@@ -14,6 +14,7 @@ import Stack from '@mui/material/Stack';
 
 
 function SortBy({sortBy}) {
+  console.log(sortBy)
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 

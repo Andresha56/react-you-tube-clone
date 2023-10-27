@@ -10,7 +10,7 @@ export function useSearchContext() {
 
   
 function SearchContext({children}) {
-    const [searchQuery, setSearchQuery] =useState("");
+    const [searchQuery, setSearchQuery] =useState([]);
   return (
     <SearchVideo.Provider value={{searchQuery,setSearchQuery}}>
       {children}

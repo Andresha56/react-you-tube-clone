@@ -8,11 +8,9 @@ import MicNoneOutlinedIcon from "@mui/icons-material/MicNoneOutlined";
 import { fetchAPI } from "../api/Api";
 import React, { useState } from "react";
 import { useSearchContext } from "../../context/SearchContext/SearchContext";
-
+import { useNavigate } from "react-router-dom";
 
 function NavSearch() {
-  
-
   const inputStyle = {
     border: 0,
     outline: 0,
@@ -22,8 +20,8 @@ function NavSearch() {
     color: "#ffffff",
     width: "100%",
   };
-  const{setSearchQuery}=useSearchContext();
-
+  const { setSearchQuery } = useSearchContext();
+  const navigate = useNavigate(); // Import useNavigate from 'react-router-dom'
   // ----------input--state-------
   const [searchedVideo, setSearchedVideo] = useState("");
   // -------search---state------
@@ -37,19 +35,16 @@ function NavSearch() {
   // -----------handelSearchSubmit-----------
   const handelSearchSubmit = (event) => {
     event.preventDefault();
-
-    fetchAPI(`search/?q=${searchedVideo}`).then((response) =>{
-
-      setSearchContent(response)
+    console.log("search");
+    fetchAPI(`search/?q=${searchedVideo}`).then((response) => {
+      setSearchContent(response);
+      console.log(response);
 
       // -----set---search-Content---to--search--context---state----
-      setSearchQuery(response)
-    }
-     
-    );
-    //set---search-Contents---to--context---
-    searchContent ? setSearchQuery(searchContent) :console.log("iy is a null")
-   
+      setSearchQuery(searchContent);
+      // After handling the search, redirect to the search page
+      navigate("/search-video");
+    });
   };
   return (
     <Box sx={{ display: "flex" }}>
@@ -75,21 +70,26 @@ function NavSearch() {
             style={inputStyle}
           />
           {/* ---search----icon----------- */}
-          <button
-            type="submit"
-            style={{
-              backgroundColor: "#383535",
-              borderTopRightRadius: "15px",
-              borderBottomRightRadius: "15px",
-              paddingLeft: "10px",
-              display: "flex",
-              alignItems: "center",
-              outline: "0",
-              border: "0",
-            }}
-          >
-            <SearchIcon sx={{ color: "#ffffff", marginRight: "10px" }} />
-          </button>
+          {
+            // <Link to="/search-video">
+            <button
+              type="submit"
+              style={{
+                backgroundColor: "#383535",
+                borderTopRightRadius: "15px",
+                borderBottomRightRadius: "15px",
+                paddingLeft: "10px",
+                display: "flex",
+                alignItems: "center",
+                outline: "0",
+                border: "0",
+                height: "100%",
+              }}
+            >
+              <SearchIcon sx={{ color: "#ffffff", marginRight: "10px" }} />
+            </button>
+            // </Link>
+          }
         </form>
       </Paper>
       {/* ------mic---- */}

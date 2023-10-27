@@ -10,20 +10,25 @@ import SearchVideos from './components/searchPage/SearchVideos';
 function App() {
   return (
     <>
-      <BrowserRouter>
+     <BrowserRouter>
         <SearchContext>
           <Nav />
-    <SearchVideos/>
-        </SearchContext>
-
-
         <Routes>
           <Route path='/' element={<Feed />} />
+
           <Route path="/video-id-page/:id" element={<VideoID />} />
+
+          <Route path="/search-video" element={<SearchVideos />} />
         </Routes>
+
+        </SearchContext>
       </BrowserRouter>
     </>
   );
 }
 
 export default App;
+
+
+
+

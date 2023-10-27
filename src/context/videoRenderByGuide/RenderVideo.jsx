@@ -7,7 +7,7 @@ export const UseVideo = () => {
 };
 
 function RenderVideo({ children }) {
-  const [renderVideo, setRentderVideo] = useState("Podcast");
+  const [renderVideo, setRentderVideo] = useState("New");
   return (
     <Video.Provider value={{ renderVideo, setRentderVideo }}>
       {children}
