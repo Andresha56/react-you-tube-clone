@@ -14,7 +14,6 @@ import Stack from '@mui/material/Stack';
 
 
 function SortBy({sortBy}) {
-  console.log(sortBy)
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -26,7 +25,6 @@ function SortBy({sortBy}) {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
 
@@ -58,6 +56,7 @@ function SortBy({sortBy}) {
           aria-expanded={open ? 'true' : undefined}
           aria-haspopup="true"
           onClick={handleToggle}
+          sx={{color:"white"}}
         >
           Sort by
         </Button>

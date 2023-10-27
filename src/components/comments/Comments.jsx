@@ -36,13 +36,15 @@ function Comments({ comments }) {
 
   return (
     <Stack>
-      <Stack sx={{ flexDirection: "row", marginBottom: "10px" ,marginTop:"20px"}}>
-        <h3>
+      <Stack sx={{ flexDirection: "row", marginBottom: "10px" ,marginTop:"20px",alignItems:"Center",gap:"20px"}}>
+        <h3 style={{color:"white",fontSize:"20px"}}>
           {comments}
-          Comments
+          <span style={{marginLeft:"10px"}}>Comments</span>
         </h3>
-        <SortIcon />
+        <Box sx={{display:"flex",alignItems:"Center"}}>
+        <SortIcon style={{ color: "white" }} />
         <SortBy sortBy={commentSortBy ? commentSortBy : ""} />
+        </Box>
       </Stack>
       {/* ----------comments----- */}
       {comment &&
