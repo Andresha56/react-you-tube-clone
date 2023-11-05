@@ -29,7 +29,7 @@
 - **react-router-dom:** For client-side routing.
 - **API Integration:** Utilizing the YouTube Data API.
 - **Context API:** For managing global application state.
-- **Material UI:** For a modern user interface.
+- **Material UI:** For user interface.
 
 ## Getting Started 🤝
 
