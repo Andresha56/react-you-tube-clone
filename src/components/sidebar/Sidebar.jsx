@@ -1,19 +1,7 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
-// ---Guide--icons------
-import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import MusicNoteOutlinedIcon from "@mui/icons-material/MusicNoteOutlined";
-import CodeIcon from "@mui/icons-material/Code";
-import PodcastsIcon from "@mui/icons-material/Podcasts";
-import SchoolOutlinedIcon from "@mui/icons-material/SchoolOutlined";
-import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
-import LocalDiningIcon from "@mui/icons-material/LocalDining";
-import FitnessCenterOutlinedIcon from "@mui/icons-material/FitnessCenterOutlined";
-import WifiTetheringOutlinedIcon from "@mui/icons-material/WifiTetheringOutlined";
-import WhatshotIcon from "@mui/icons-material/Whatshot";
-// ---XXX----
+import { ExploreSection } from "./explore/Explore";
 
 // ------reder---video---based--on--guide------
 import { UseVideo } from "../../context/videoRenderByGuide/RenderVideo";
@@ -29,22 +17,12 @@ const guideButtonStyle = {
   display:"flex",
   alignItems:"center",
 };
+
+
 function Sidebar() {
   //---id of hoverd guide button---
   const [hoveredId, setHoveredId] = useState(null);
-  const guideSection = [
-    { id: 1, guideEntry: "Home", guideIcons: <HomeOutlinedIcon sx={{ fontSize: 20 ,marginRight:"7px"}} /> },
-    { id: 2, guideEntry: "Music", guideIcons: <MusicNoteOutlinedIcon sx={{ fontSize: 20 ,marginRight:"7px"}} /> },
-    { id: 3, guideEntry: "Coding", guideIcons: <CodeIcon sx={{ fontSize: 20,marginRight:"7px" }} /> },
-    { id: 4, guideEntry: "Podcast", guideIcons: <PodcastsIcon sx={{ fontSize: 20 ,marginRight:"7px"}} /> },
-    { id: 5, guideEntry: "Education", guideIcons: <SchoolOutlinedIcon sx={{ fontSize: 20 ,marginRight:"7px"}} /> },
-    { id: 6, guideEntry: "News", guideIcons: <NewspaperOutlinedIcon sx={{ fontSize: 20 ,marginRight:"7px"}} /> },
-    { id: 7, guideEntry: "Motivation", guideIcons: <PsychologyOutlinedIcon sx={{ fontSize: 20 ,marginRight:"7px"}} /> },
-    { id: 8, guideEntry: "Food", guideIcons: <LocalDiningIcon sx={{ fontSize: 20 ,marginRight:"7px"}} /> },
-    { id: 9, guideEntry: "Fitness", guideIcons: <FitnessCenterOutlinedIcon sx={{ fontSize: 20 ,marginRight:"7px"}} /> },
-    { id: 10, guideEntry: "Live", guideIcons: <WifiTetheringOutlinedIcon sx={{ fontSize: 20 ,marginRight:"7px"}} /> },
-    { id: 11, guideEntry: "Trending", guideIcons: <WhatshotIcon sx={{ fontSize: 20 ,marginRight:"7px"}} /> },
-  ];
+  // ------destructure explore---
  
 // ------reder---video---based--on--guide--logic----
   const{setRentderVideo}=UseVideo()
@@ -54,9 +32,9 @@ function Sidebar() {
   }
   return (
     <>
-      <Stack sx={{ gap: 1 }}>
-        {guideSection.map((values) => {
-          const { id, guideEntry, guideIcons } = values;
+      <Stack sx={{ gap: 1 ,  position:" sticky",top:"90px"}}>
+        {ExploreSection.map((values) => {
+          const { id, explore, exploreIcon } = values;
           return (
             <Box key={id}>
               <button
@@ -70,10 +48,10 @@ function Sidebar() {
                 onMouseLeave={() => {
                   setHoveredId(null);
                 }}
-                onClick={(()=>handelGuide(guideEntry))}
+                onClick={(()=>handelGuide(explore))}
               >
-                {guideIcons}
-                {guideEntry}
+                {exploreIcon}
+                {explore}
               </button>
             </Box>
           );

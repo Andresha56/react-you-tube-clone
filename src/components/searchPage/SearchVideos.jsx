@@ -19,13 +19,7 @@ function SearchVideos() {
     }
   }, [searchQuery]);
 
-  // videoId,
-  // thumbnail,
-  // videoTitle,
-  // authorTitle,
-  // authorbadge,
-  // views,
-  // publishedTimeText,
+ 
 
   return (
     <Container>

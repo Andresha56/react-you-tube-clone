@@ -21,7 +21,7 @@ function NavSearch() {
     width: "100%",
   };
   const { setSearchQuery } = useSearchContext();
-  const navigate = useNavigate(); // Import useNavigate from 'react-router-dom'
+  const navigate = useNavigate(); 
   // ----------input--state-------
   const [searchedVideo, setSearchedVideo] = useState("");
 
@@ -45,7 +45,6 @@ function NavSearch() {
     if (isSearch) {
       fetchAPI(`search/?q=${searchedVideo}`)
         .then((response) => {
-          // Ensure you handle potential errors here
           if (response) {
             // Set the content to the search context
             setSearchQuery(response);
@@ -83,7 +82,6 @@ function NavSearch() {
           />
           {/* ---search----icon----------- */}
           {
-            // <Link to="/search-video">
             <button
               type="submit"
               style={{
@@ -114,7 +112,6 @@ function NavSearch() {
         }}
       >
         {" "}
-        {/*  //greyCol*/}
         <MicNoneOutlinedIcon />
       </Avatar>
     </Box>

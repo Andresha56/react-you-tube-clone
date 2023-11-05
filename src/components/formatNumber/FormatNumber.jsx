@@ -1,3 +1,5 @@
+
+
 function formatNumber(number) {
   if (number >= 1000000000) {
     return (number / 1000000000).toFixed(1) + "B";

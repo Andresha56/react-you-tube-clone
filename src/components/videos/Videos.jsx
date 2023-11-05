@@ -9,6 +9,7 @@ function Videos() {
   const [videos, setVideos] = useState([]);
   const [loding, setLoding] = useState(true);
 
+  // console.log(video?.video?.title.slice(0, 50) + "...")
   // -----loding----
   useEffect(() => {
     setTimeout(() => {
@@ -21,21 +22,28 @@ function Videos() {
       setRentderVideo("New");
     }
     fetchAPI(`search/?q=${renderVideo}`).then((response) => {
+      // console.log(response)
       setVideos(response?.contents);
     });
   }, [renderVideo, setRentderVideo]);
   return (
     <Grid container spacing={2} sx={{ width: "100%", padding: "0 30px" }}>
-      {videos.length !== 0
-        ? videos.map((video, index) => {
-            return loding ? (
-              <SkeletonLoding key={index} />
-            ) : (
-              <VideoCard key={index} video={video} />
-            );
-          })
-        :""}
-    </Grid>
+    {videos.length !== 0
+      ? 
+      // -----filter--the--videos--based---on--avilablity---
+      videos.filter((video) => {
+        return video?.video?.title
+      }).map((video, index) => {
+        return loding ? (
+          <SkeletonLoding key={index} />
+        ) : (
+          <VideoCard key={index} video={video} />
+        );
+      })
+      : ""
+    }
+  </Grid>
+  
     
   );
 }

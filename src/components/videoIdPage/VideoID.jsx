@@ -21,7 +21,6 @@ function VideoID() {
   useEffect(() => {
     fetchAPI(`video/details/?id=${id}`).then((response) => {
       setVideo(response);
-      console.log(response);
     });
   }, [id]);
 

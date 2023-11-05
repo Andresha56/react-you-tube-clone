@@ -17,7 +17,7 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 function Nav() {
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ position:"sticky",top:0,backgroundColor:"#181818",zIndex:999,padding:"0 20px"}}>
         <AppBar position="static" sx={{background:"transparent" }}>
           <Toolbar sx={{justifyContent:"space-between"}}>
           
