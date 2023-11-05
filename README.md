@@ -49,12 +49,12 @@ To run this project on your local machine, follow these steps:
   
 7.  **Install Axios.**
 
-8.  Start the development server with npm start.
+8.  **Start the development server with npm start.**
 
-9.  Most importantly, please double-check the project's dependencies to ensure nothing is missing.
+9.  **Most importantly, please double-check the project's dependencies to ensure nothing is missing.**
 
 ## Support🙏🙏
-Don't forget to drop a star ✨✨
+**Don't forget to drop a star. ✨✨**
 
   
    
